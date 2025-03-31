@@ -1,31 +1,76 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #181818; 
+  color: #eaeaea; 
 }
 
-.App-link {
-  color: #61dafb;
+
+.header {
+  background: rgba(33, 33, 33, 0.9);
+  color: #eaeaea; 
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.menu-icon {
+  cursor: pointer;
+}
+
+
+.return-button {
+  background: none;
+  border: 1px solid #eaeaea; 
+  color: #eaeaea; 
+}
+
+.return-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.content {
+  gap: 20px;
+  padding: 20px;
+  margin-top: 80px; 
+  margin-bottom: 50px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quiz-button {
+  width: 250px;
+  padding: 15px;
+  font-size: 1.2rem;
+  background-color: #333333; 
+  color: #eaeaea; 
+  border: none;
+}
+
+.quiz-button:hover {
+  background-color: #555555; 
+}
+
+.footer {
+  background: rgba(33, 33, 33, 0.9); 
+  color: #eaeaea; 
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
 @keyframes App-logo-spin {
@@ -36,3 +81,15 @@
     transform: rotate(360deg);
   }
 }
+
+.logo {
+  width: auto; 
+  height: auto;
+  display: block;
+  margin: 0 auto; 
+  animation: App-logo-spin 10s linear infinite; /* Apply the spin animation */
+
+}
+
+
+
