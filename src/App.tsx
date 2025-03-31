@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Button, Tooltip, OverlayTrigger } from 'react-bootstrap';
+import { Button, Tooltip, Form, OverlayTrigger } from 'react-bootstrap';
 import { List } from 'react-bootstrap-icons';
 import logo from './logo.svg'; 
 
@@ -65,7 +65,14 @@ function App() {
         <footer className="footer">
           <p>Built by Maksym Shkopas, Isaiah Moore, Marcos Diaz Vazquez, Dhruv Patel</p>
         </footer>
+        <Form>
+        <Form.Label>API Key:</Form.Label>
+        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+        <br></br>
+        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+      </Form>
       </div>
+      
   );
 }
 
