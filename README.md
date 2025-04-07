@@ -1,5 +1,4 @@
 # Getting Started with Helpi
-Dhruv
 Packages Included:
 * npm
 * bootstrap
