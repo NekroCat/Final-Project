@@ -63,7 +63,7 @@ function App() {
         </div>
         
         <footer className="footer">
-          <p>Built by Maksym Shkopas, Isaiah Moore, Marcos Diaz Vazquez, Dhruv Patel</p>
+          <p>Built by Maksym Shkopas, Marcos Diaz Vazquez, Dhruv Patel</p>
         </footer>
         <Form>
         <Form.Label>API Key:</Form.Label>
