@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Tooltip, Form, OverlayTrigger } from 'react-bootstrap';
 import { List } from 'react-bootstrap-icons';
-import logo from './logo.svg'; 
+import logo from './logo.svg';
+import BasicQuestions from './components/BasicQuestions';
+import DetailedQuestions from './components/DetailedQuestions';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+
 
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -15,7 +19,8 @@ if (prevKey !== null) {
 
 
 
-function App() {
+function HomePage() {
+  const navigate = useNavigate();
   const [key, setKey] = useState<string>(keyData); //for api key input
   
   //sets the local storage item to the api key the user inputed
@@ -46,14 +51,14 @@ function App() {
               placement="right"
               overlay={<Tooltip id="tooltip-basic">A simple quiz with general career-related questions.</Tooltip>}
             >
-              <Button className="quiz-button" variant="Basic">Basic Questions ❓</Button>
+              <Button className="quiz-button" variant="Basic" onClick={() => navigate('/basic-questions')}>Basic Questions ❓</Button>
             </OverlayTrigger>
             
             <OverlayTrigger
               placement="right"
               overlay={<Tooltip id="tooltip-advanced">A more in-depth quiz with detailed questions.</Tooltip>}
             >
-              <Button className="quiz-button" variant="Advanced">Advanced Questions ❓</Button>
+              <Button className="quiz-button" variant="Advanced" onClick={() => navigate('/advanced-questions')}>Advanced Questions ❓</Button>
             </OverlayTrigger>
           </div>
         </div>
@@ -73,6 +78,16 @@ function App() {
       </Form>
       </div>
       
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/basic-questions" element={<BasicQuestions />} />
+      <Route path="/advanced-questions" element={<DetailedQuestions />} />
+    </Routes>
   );
 }
 
