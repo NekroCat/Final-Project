@@ -38,12 +38,16 @@ if (prevKey !== null) {
 function HomePage() {
   const navigate = useNavigate();
   const [key, setKey] = useState<string>(keyData); //for api key input
-  const [theme, setTheme] = useState(themes.dark);
-  useEffect(() => {
+  const storedThemeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light' | null;
+  const [theme, setTheme] = useState(storedThemeName ? themes[storedThemeName] : themes.dark);  useEffect(() => {
     document.body.style.backgroundColor = theme.background;
     document.body.style.color = theme.text;
   }, [theme]);
   
+  function handleSetTheme(themeName: 'dark' | 'light') {
+    setTheme(themes[themeName]);
+    localStorage.setItem('SELECTED_THEME', themeName);
+  }
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -63,8 +67,8 @@ function HomePage() {
             <List size={30} />
           </div>
           <div style={{ marginTop: '20px' }}>
-            <Button onClick={() => setTheme(themes.dark)} variant="dark" style={{ marginRight: '10px' }}>Dark Theme</Button>
-            <Button onClick={() => setTheme(themes.light)} variant="secondary" style={{ marginRight: '10px' }}>Light Theme</Button>
+            <Button onClick={() => handleSetTheme('dark')} variant="dark" style={{ marginRight: '10px' }}>Dark Theme</Button>
+            <Button onClick={() => handleSetTheme('light')} variant="secondary" style={{ marginRight: '10px' }}>Light Theme</Button>
           </div>
           <h1 className="website-title">Career Pathway - Choose Your Career With Us</h1>
           <Button variant="outline-light" className="return-button" style={{backgroundColor: theme.button, color: theme.text }}>Return to Main Page</Button>
