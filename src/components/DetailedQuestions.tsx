@@ -76,7 +76,7 @@ const themes = {
         button: '#333333',
         buttonHover: '#555555',
         headerFooter: 'rgba(33, 33, 33, 0.9)',
-        selectedButton: '#4CAF50',
+        selectedButton: '#48A6A6',
         categoryHeader: '#2C2C2C'
     },
     light: {
