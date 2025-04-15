@@ -12,13 +12,13 @@ FAIL src/App.test.tsx
       src/App.tsx
       src/App.test.tsx
 
-      1 | import React from 'react';
+      1 | import React, { useState } from 'react';
       2 | import { Button } from 'react-bootstrap';
     > 3 | import { useNavigate } from 'react-router-dom';
         | ^
       4 | import { List } from 'react-bootstrap-icons';
       5 |
-      6 |
+      6 | interface Question {
 
       at Resolver.resolveModule (node_modules/jest-resolve/build/resolver.js:324:11)
       at Object.<anonymous> (src/components/BasicQuestions.tsx:3:1)
@@ -29,23 +29,6 @@ FAIL src/App.test.tsx
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
-------------------------|---------|----------|---------|---------|-------------------
-File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-------------------------|---------|----------|---------|---------|-------------------
-All files               |       0 |        0 |       0 |       0 |                   
- src                    |       0 |        0 |       0 |       0 |                   
-  App.tsx               |       0 |        0 |       0 |       0 | 13-115            
-  index.tsx             |       0 |      100 |     100 |       0 | 8-22              
-  reportWebVitals.ts    |       0 |        0 |       0 |       0 | 3-10              
- src/components         |       0 |        0 |       0 |       0 |                   
-  BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 8-39              
-  DetailedQuestions.tsx |       0 |        0 |       0 |       0 | 7-39              
-------------------------|---------|----------|---------|---------|-------------------
-Test Suites: 1 failed, 1 total
-Tests:       0 total
-Snapshots:   0 total
-Time:        3.101 s
-Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
 declaring it in its dependencies. This is currently working because
@@ -58,3 +41,20 @@ ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.[0m
   
+------------------------|---------|----------|---------|---------|-------------------
+File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------------|---------|----------|---------|---------|-------------------
+All files               |       0 |        0 |       0 |       0 |                   
+ src                    |       0 |        0 |       0 |       0 |                   
+  App.tsx               |       0 |        0 |       0 |       0 | 13-115            
+  index.tsx             |       0 |      100 |     100 |       0 | 8-22              
+  reportWebVitals.ts    |       0 |        0 |       0 |       0 | 3-10              
+ src/components         |       0 |        0 |       0 |       0 |                   
+  BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 12-117            
+  DetailedQuestions.tsx |       0 |        0 |       0 |       0 | 13-260            
+------------------------|---------|----------|---------|---------|-------------------
+Test Suites: 1 failed, 1 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        3.471 s
+Ran all test suites.
