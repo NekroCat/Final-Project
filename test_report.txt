@@ -16,9 +16,9 @@ FAIL src/App.test.tsx
       2 | import { Button } from 'react-bootstrap';
     > 3 | import { useNavigate } from 'react-router-dom';
         | ^
-      4 |
-      5 | function BasicQuestions() {
-      6 |     const navigate = useNavigate();
+      4 | import { List } from 'react-bootstrap-icons';
+      5 |
+      6 |
 
       at Resolver.resolveModule (node_modules/jest-resolve/build/resolver.js:324:11)
       at Object.<anonymous> (src/components/BasicQuestions.tsx:3:1)
@@ -37,14 +37,14 @@ All files               |       0 |        0 |       0 |       0 |
   App.tsx               |       0 |        0 |       0 |       0 | 13-115            
   index.tsx             |       0 |      100 |     100 |       0 | 8-22              
   reportWebVitals.ts    |       0 |        0 |       0 |       0 | 3-10              
- src/components         |       0 |      100 |       0 |       0 |                   
-  BasicQuestions.tsx    |       0 |      100 |       0 |       0 | 6-14              
-  DetailedQuestions.tsx |       0 |      100 |       0 |       0 | 6-15              
+ src/components         |       0 |        0 |       0 |       0 |                   
+  BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 8-39              
+  DetailedQuestions.tsx |       0 |        0 |       0 |       0 | 7-39              
 ------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        3.051 s
+Time:        3.101 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
