@@ -122,6 +122,22 @@ function BasicQuestions() {
                         </div>
                     </div>
                 ))}
+                {/* submit Button */}
+                <div style={{ textAlign: 'center', marginTop: '2rem', marginBottom: '3rem' }}>
+                    <Button 
+                        variant="success" 
+                        size="lg"
+                        style={{
+                            backgroundColor: '#48A6A6',
+                            color: '#ffffff',
+                            padding: '0.75rem 2rem',
+                            fontSize: '1.2rem',
+                            border: 'none'
+                        }}
+                    >
+                        Submit Answers & Get Career Recommendations
+                    </Button>
+                </div>
             </div>
         </div>
     );
