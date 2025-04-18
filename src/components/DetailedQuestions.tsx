@@ -97,6 +97,8 @@ function DetailedQuestions() {
     const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: string }>({});
     const [openAnswers, setOpenAnswers] = useState<{ [key: number]: string }>({});
     const [currentCategory, setCurrentCategory] = useState<string>("Personal Strengths & Skills");
+    document.body.style.backgroundColor = theme.background;
+    document.body.style.color = theme.text;
 
     useEffect(() => {
         const storedAnswers: { [key: number]: string } = {};
