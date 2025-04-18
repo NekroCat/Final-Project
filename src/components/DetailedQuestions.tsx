@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { List } from 'react-bootstrap-icons';
@@ -98,11 +98,33 @@ function DetailedQuestions() {
     const [openAnswers, setOpenAnswers] = useState<{ [key: number]: string }>({});
     const [currentCategory, setCurrentCategory] = useState<string>("Personal Strengths & Skills");
 
+    useEffect(() => {
+        const storedAnswers: { [key: number]: string } = {};
+        const storedOpenAnswers: { [key: number]: string } = {};
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key && key.startsWith("detailed-")) {
+              const questionId = Number(key.split("-")[1]); 
+              const answer = localStorage.getItem(key);
+              if (answer && questionId<= questions.length) {
+                storedAnswers[questionId] = answer;
+              }
+              else if(answer && questionId> questions.length){
+                storedOpenAnswers[questionId] = answer;
+              }
+            }
+          }
+        setSelectedAnswers(storedAnswers);
+        setOpenAnswers(storedOpenAnswers);
+      }, []);
+    
+
     const handleAnswer = (questionId: number, answer: string) => {
         setSelectedAnswers(prev => ({
             ...prev,
             [questionId]: answer
         }));
+        SetQuestionState(questionId, answer);
     };
 
     const handleOpenAnswer = (questionId: number, answer: string) => {
@@ -110,6 +132,7 @@ function DetailedQuestions() {
             ...prev,
             [questionId]: answer
         }));
+        SetQuestionState(questionId, answer);
     };
 
     const buttonStyle = (questionId: number, option: string) => ({
@@ -126,6 +149,16 @@ function DetailedQuestions() {
 
     // filter questions by current category
     const filteredQuestions = questions.filter(q => q.category === currentCategory);
+
+
+    function SetQuestionState(questionID: number, answer: string) {
+        localStorage.setItem(`detailed-${questionID.toString()}`, answer);
+    }
+
+    function ClearCache(){
+        localStorage.clear()
+    }
+    
 
     return (
         <div style={{ backgroundColor: theme.background, minHeight: '100vh', color: theme.text }}>
@@ -271,7 +304,7 @@ function DetailedQuestions() {
                 
                 {/* submit Button */}
                 <div style={{ textAlign: 'center', marginTop: '2rem', marginBottom: '3rem' }}>
-                    <Button 
+                    <Button onClick={() => ClearCache()}
                         variant="success" 
                         size="lg"
                         style={{
