@@ -49,6 +49,8 @@ function BasicQuestions() {
     const themeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light' | null;
     const theme = themeName ? themes[themeName] : themes.dark;
     const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: string }>({});
+    document.body.style.backgroundColor = theme.background;
+    document.body.style.color = theme.text;
 
     useEffect(() => {
             const storedAnswers: { [key: number]: string } = {};
