@@ -105,7 +105,7 @@ function BasicQuestions() {
                 <div className="menu-icon">
                     <List size={30} />
                 </div>
-                <h1 className="website-title">Career Pathway - Choose Your Career With Us</h1>
+                <h1 className="website-title">Career Pathway - Basic Assessment</h1>
                 <Button variant="outline-light" className="return-button" onClick={() => navigate('/')} style={{backgroundColor: theme.button, color: theme.text }}>Return to Main Page</Button>
             </header>
             <div style={{
