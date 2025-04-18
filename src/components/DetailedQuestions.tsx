@@ -2,6 +2,7 @@ import React, { useEffect,useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { List } from 'react-bootstrap-icons';
+import ProgressBar from './ProgressBar';
 
 interface Question {
     id: number;
@@ -104,19 +105,19 @@ function DetailedQuestions() {
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
             if (key && key.startsWith("detailed-")) {
-              const questionId = Number(key.split("-")[1]); 
-              const answer = localStorage.getItem(key);
-              if (answer && questionId<= questions.length) {
-                storedAnswers[questionId] = answer;
-              }
-              else if(answer && questionId> questions.length){
-                storedOpenAnswers[questionId] = answer;
-              }
+                const questionId = Number(key.split("-")[1]); 
+                const answer = localStorage.getItem(key);
+                if (answer && questionId<= questions.length) {
+                    storedAnswers[questionId] = answer;
+                }
+                else if(answer && questionId> questions.length){
+                    storedOpenAnswers[questionId] = answer;
+                }
             }
-          }
+        }
         setSelectedAnswers(storedAnswers);
         setOpenAnswers(storedOpenAnswers);
-      }, []);
+        }, []);
     
 
     const handleAnswer = (questionId: number, answer: string) => {
@@ -150,6 +151,11 @@ function DetailedQuestions() {
     // filter questions by current category
     const filteredQuestions = questions.filter(q => q.category === currentCategory);
 
+    // calculate progress for progress bar
+    const totalQuestions = questions.length + openEndedQuestions.length;
+    const answeredMultipleChoice = Object.keys(selectedAnswers).length;
+    const answeredOpenEnded = Object.values(openAnswers).filter(answer => answer && answer.trim() !== '').length;
+    const totalAnswered = answeredMultipleChoice + answeredOpenEnded;
 
     function SetQuestionState(questionID: number, answer: string) {
         localStorage.setItem(`detailed-${questionID.toString()}`, answer);
@@ -173,7 +179,7 @@ function DetailedQuestions() {
             <div style={{
                 maxWidth: '1200px',
                 margin: '0 auto',
-                padding: '100px 20px 50px 20px'
+                padding: '150px 20px 50px 20px'
             }}>
                 <h2 style={{ 
                     textAlign: 'center', 
@@ -182,7 +188,12 @@ function DetailedQuestions() {
                 }}>
                     In-depth career assessment to provide personalized recommendations
                 </h2>
-                
+                {/* Progress Bar */}
+                <ProgressBar 
+                        current={totalAnswered} 
+                        total={totalQuestions} 
+                        theme={theme} 
+                />
                 {/* category navigation */}
                 <div style={{
                     display: 'flex',

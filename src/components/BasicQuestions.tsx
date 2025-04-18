@@ -2,6 +2,7 @@ import React, { useEffect,useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { List } from 'react-bootstrap-icons';
+import ProgressBar from './ProgressBar';
 
 interface Question {
     id: number;
@@ -92,6 +93,10 @@ function BasicQuestions() {
         border: `1px solid ${theme.buttonHover}`,
     });
 
+    const answeredQuestions = Object.keys(selectedAnswers).length;
+    const totalQuestions = questions.length;
+
+
     return (
         <div style={{ backgroundColor: theme.background, minHeight: '100vh', color: theme.text }}>
             <header className="header" style={{ backgroundColor: theme.headerFooter, color: theme.text }}>
@@ -104,7 +109,7 @@ function BasicQuestions() {
             <div style={{
                 maxWidth: '1200px',
                 margin: '0 auto',
-                padding: '100px 20px 50px 20px'
+                padding: '150px 20px 50px 20px'
             }}>
                 <h2 style={{ 
                     textAlign: 'center', 
@@ -113,6 +118,12 @@ function BasicQuestions() {
                 }}>
                     Short and straightforward to help filter broad career categories quickly:
                 </h2>
+                {/* Progress Bar */}
+                <ProgressBar 
+                    current={answeredQuestions} 
+                    total={totalQuestions} 
+                    theme={theme} 
+                />
                 {questions.map((question) => (
                     <div key={question.id} style={{
                         marginBottom: '2rem',
