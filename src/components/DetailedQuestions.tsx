@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { List } from 'react-bootstrap-icons';
+import ProgressBar from './ProgressBar';
 
 interface Question {
     id: number;
@@ -127,6 +128,13 @@ function DetailedQuestions() {
     // filter questions by current category
     const filteredQuestions = questions.filter(q => q.category === currentCategory);
 
+    // calculate progress for progress bar
+    const totalQuestions = questions.length + openEndedQuestions.length;
+    const answeredMultipleChoice = Object.keys(selectedAnswers).length;
+    const answeredOpenEnded = Object.values(openAnswers).filter(answer => answer && answer.trim() !== '').length;
+    const totalAnswered = answeredMultipleChoice + answeredOpenEnded;
+    
+
     return (
         <div style={{ backgroundColor: theme.background, minHeight: '100vh', color: theme.text }}>
             <header className="header" style={{ backgroundColor: theme.headerFooter, color: theme.text, position: 'fixed', width: '100%', zIndex: 100 }}>
@@ -140,7 +148,7 @@ function DetailedQuestions() {
             <div style={{
                 maxWidth: '1200px',
                 margin: '0 auto',
-                padding: '100px 20px 50px 20px'
+                padding: '150px 20px 50px 20px'
             }}>
                 <h2 style={{ 
                     textAlign: 'center', 
@@ -149,7 +157,12 @@ function DetailedQuestions() {
                 }}>
                     In-depth career assessment to provide personalized recommendations
                 </h2>
-                
+                {/* Progress Bar */}
+                <ProgressBar 
+                        current={totalAnswered} 
+                        total={totalQuestions} 
+                        theme={theme} 
+                />
                 {/* category navigation */}
                 <div style={{
                     display: 'flex',
