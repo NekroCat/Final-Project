@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { List } from 'react-bootstrap-icons';
@@ -51,12 +51,38 @@ function BasicQuestions() {
     const theme = themeName ? themes[themeName] : themes.dark;
     const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: string }>({});
 
+    useEffect(() => {
+            const storedAnswers: { [key: number]: string } = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && key.startsWith("basic-")) {
+                  const questionId = Number(key.split("-")[1]); 
+                  const answer = localStorage.getItem(key);
+                  if (answer) {
+                    storedAnswers[questionId] = answer;
+                  }
+        
+                }
+              }
+            setSelectedAnswers(storedAnswers);
+          }, []);
+
     const handleAnswer = (questionId: number, answer: string) => {
         setSelectedAnswers(prev => ({
             ...prev,
             [questionId]: answer
         }));
+        SetQuestionState(questionId, answer);
+
     };
+
+    function SetQuestionState(questionID: number, answer: string) {
+        localStorage.setItem(`basic-${questionID.toString()}`, answer);
+    }
+
+    function ClearCache(){
+        localStorage.clear()
+    }
 
     const buttonStyle = (questionId: number, option: string) => ({
         backgroundColor: selectedAnswers[questionId] === option ? '#48A6A7' : theme.button,
@@ -135,7 +161,7 @@ function BasicQuestions() {
                 ))}
                 {/* submit Button */}
                 <div style={{ textAlign: 'center', marginTop: '2rem', marginBottom: '3rem' }}>
-                    <Button 
+                    <Button onClick={() => ClearCache()}
                         variant="success" 
                         size="lg"
                         style={{
@@ -144,7 +170,7 @@ function BasicQuestions() {
                             padding: '0.75rem 2rem',
                             fontSize: '1.2rem',
                             border: 'none'
-                        }}
+                        }} 
                     >
                         Submit Answers & Get Career Recommendations
                     </Button>
