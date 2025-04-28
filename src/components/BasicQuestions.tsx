@@ -58,16 +58,16 @@ function BasicQuestions() {
             for (let i = 0; i < localStorage.length; i++) {
                 const key = localStorage.key(i);
                 if (key && key.startsWith("basic-")) {
-                  const questionId = Number(key.split("-")[1]); 
-                  const answer = localStorage.getItem(key);
-                  if (answer) {
-                    storedAnswers[questionId] = answer;
-                  }
+                    const questionId = Number(key.split("-")[1]); 
+                    const answer = localStorage.getItem(key);
+                        if (answer) {
+                            storedAnswers[questionId] = answer;
+                        }
         
                 }
-              }
+            }
             setSelectedAnswers(storedAnswers);
-          }, []);
+        }, []);
 
     const handleAnswer = (questionId: number, answer: string) => {
         setSelectedAnswers(prev => ({
