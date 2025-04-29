@@ -90,6 +90,11 @@ body, html {
   text-decoration: none;
   margin-right: 20px;
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
 }
 
 .about-link:hover {
