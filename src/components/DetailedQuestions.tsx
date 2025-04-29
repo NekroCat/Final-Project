@@ -1,7 +1,6 @@
 import React, { useEffect,useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { List } from 'react-bootstrap-icons';
 import ProgressBar from './ProgressBar';
 
 interface Question {
@@ -163,16 +162,15 @@ function DetailedQuestions() {
         localStorage.setItem(`detailed-${questionID.toString()}`, answer);
     }
 
-    function ClearCache(){
-        localStorage.clear()
+    function handleSubmit() {
+        navigate('/results?quiz=basic');
     }
-    
 
     return (
         <div style={{ backgroundColor: theme.background, minHeight: '100vh', color: theme.text }}>
             <header className="header" style={{ backgroundColor: theme.headerFooter, color: theme.text, position: 'fixed', width: '100%', zIndex: 100 }}>
                 <div className="menu-icon">
-                    <List size={30} />
+                    <img src={process.env.PUBLIC_URL + '/favicon-32x32.png'} alt="Career Helpi Logo" />
                 </div>
                 <h1 className="website-title">Career Pathway - Detailed Assessment</h1>
                 <Button variant="outline-light" className="return-button" onClick={() => navigate('/')} style={{backgroundColor: theme.button, color: theme.text }}>Return to Main Page</Button>
@@ -317,7 +315,7 @@ function DetailedQuestions() {
                 
                 {/* submit Button */}
                 <div style={{ textAlign: 'center', marginTop: '2rem', marginBottom: '3rem' }}>
-                    <Button onClick={() => ClearCache()}
+                    <Button onClick={() => handleSubmit()}
                         variant="success" 
                         size="lg"
                         style={{
