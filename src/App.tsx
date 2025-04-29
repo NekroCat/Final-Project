@@ -86,7 +86,7 @@ function HomePage() {
       <header className="header" style={{ background: theme.headerFooter, color: theme.text }}>
         <div className="header-left">
           <div className="menu-icon">
-            <img src="/favicon-32x32.png" alt="Career Helpi Logo" />
+            <img src={process.env.PUBLIC_URL + '/favicon-32x32.png'} alt="Career Helpi Logo" />
           </div>
           <h1 className="website-title">Career Helpi</h1>
         </div>
