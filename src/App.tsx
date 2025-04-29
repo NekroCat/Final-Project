@@ -2,12 +2,9 @@ import React, { useState, useEffect} from 'react';
 import './App.css';
 import { Button, Tooltip, Form, OverlayTrigger } from 'react-bootstrap';
 import { List } from 'react-bootstrap-icons';
-import logo from './logo.svg';
 import BasicQuestions from './components/BasicQuestions';
 import DetailedQuestions from './components/DetailedQuestions';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-
-
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -16,17 +13,29 @@ const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: 
 const themes = {
   dark: {
     background: '#181818',
-    text: '#eaeaea',
+    text: '#9ACBD0',
     button: '#333333',
-    buttonHover: '#555555',
+    buttonHover: '#48A6A7',
     headerFooter: 'rgba(33, 33, 33, 0.9)',
+    accent: '#48A6A7',
+    linkColor: '#48A6A7',
+    buttonText: '#ffffff',
+    selectedButton: '#48A6A7',
+    unselectedButton: '#333333',
+    quizTitle: '#ffffff'
   },
   light: {
     background: '#F2EFE7',
     text: '#006A71',
-    button: '#9ACBD0',
-    buttonHover: '#48A6A7',
+    button: '#48A6A7',
+    buttonHover: '#006A71',
     headerFooter: '#DDD8CF',
+    accent: '#48A6A7',
+    linkColor: '#48A6A7',
+    buttonText: '#ffffff',
+    selectedButton: '#48A6A7',
+    unselectedButton: '#9ACBD0',
+    quizTitle: '#006A71'
   }
 };
 if (prevKey !== null) {
@@ -37,77 +46,99 @@ if (prevKey !== null) {
 
 function HomePage() {
   const navigate = useNavigate();
-  const [key, setKey] = useState<string>(keyData); //for api key input
+  const [key, setKey] = useState<string>(keyData);
   const storedThemeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light' | null;
-  const [theme, setTheme] = useState(storedThemeName ? themes[storedThemeName] : themes.dark);  useEffect(() => {
+  const [theme, setTheme] = useState(storedThemeName ? themes[storedThemeName] : themes.dark);
+  const [currentTheme, setCurrentTheme] = useState<'dark' | 'light'>(storedThemeName || 'dark');
+
+  useEffect(() => {
     document.body.style.backgroundColor = theme.background;
     document.body.style.color = theme.text;
+    document.documentElement.style.setProperty('--background-color', theme.background);
+    document.documentElement.style.setProperty('--text-color', theme.text);
+    document.documentElement.style.setProperty('--button', theme.button);
+    document.documentElement.style.setProperty('--button-hover', theme.buttonHover);
+    document.documentElement.style.setProperty('--header-footer', theme.headerFooter);
+    document.documentElement.style.setProperty('--accent', theme.accent);
+    document.documentElement.style.setProperty('--link-color', theme.linkColor);
+    document.documentElement.style.setProperty('--button-text', theme.buttonText);
+    document.documentElement.style.setProperty('--selected-button', theme.selectedButton);
+    document.documentElement.style.setProperty('--unselected-button', theme.unselectedButton);
+    document.documentElement.style.setProperty('--quiz-title', theme.quizTitle);
   }, [theme]);
   
   function handleSetTheme(themeName: 'dark' | 'light') {
     setTheme(themes[themeName]);
+    setCurrentTheme(themeName);
     localStorage.setItem('SELECTED_THEME', themeName);
   }
   
-  //sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
-    window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
+    window.location.reload();
   }
 
-  //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
 
   return (
-      <div className="App" style={{ backgroundColor: theme.background, color: theme.text }}>
-        <header className="header" style={{ background: theme.headerFooter, color: theme.text }}>
+    <div className="App" style={{ backgroundColor: theme.background, color: theme.text }}>
+      <header className="header" style={{ background: theme.headerFooter, color: theme.text }}>
+        <div className="header-left">
           <div className="menu-icon">
-            <List size={30} />
+            <img src="/favicon-32x32.png" alt="Career Helpi Logo" />
           </div>
-          <div style={{ marginTop: '20px' }}>
-            <Button onClick={() => handleSetTheme('dark')} variant="dark" style={{ marginRight: '10px' }}>Dark Theme</Button>
-            <Button onClick={() => handleSetTheme('light')} variant="secondary" style={{ marginRight: '10px' }}>Light Theme</Button>
-          </div>
-          <h1 className="website-title">Career Pathway - Choose Your Career With Us</h1>
-          <Button variant="outline-light" className="return-button" style={{backgroundColor: theme.button, color: theme.text }}>Return to Main Page</Button>
-        </header>
-        
-        <div className="content" style={{paddingTop: '100px'}}>
-          <h2>Select Your Quiz Type</h2>
-          <div className="button-group">
-            <OverlayTrigger
-              placement="right"
-              overlay={<Tooltip id="tooltip-basic" style={{color:theme.buttonHover}}>A simple quiz with general career-related questions.</Tooltip>}
+          <h1 className="website-title">Career Helpi</h1>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <a href="#" className="about-link">About Us</a>
+          <div className="theme-buttons">
+            <Button 
+              onClick={() => handleSetTheme('dark')} 
+              className={currentTheme === 'dark' ? 'selected' : 'unselected'}
             >
-              <Button className="quiz-button" variant="Basic" onClick={() => navigate('/basic-questions')} style={{backgroundColor: theme.button, color: theme.text }}>Basic Questions ❓</Button>
-            </OverlayTrigger>
-            
-            <OverlayTrigger
-              placement="right"
-              overlay={<Tooltip id="tooltip-advanced">A more in-depth quiz with detailed questions.</Tooltip>}
+              Dark Theme
+            </Button>
+            <Button 
+              onClick={() => handleSetTheme('light')} 
+              className={currentTheme === 'light' ? 'selected' : 'unselected'}
             >
-              <Button className="quiz-button" variant="Advanced" onClick={() => navigate('/detailed-questions')} style={{backgroundColor: theme.button, color: theme.text }} >Detailed Questions ❓</Button>
-            </OverlayTrigger>
+              Light Theme
+            </Button>
           </div>
         </div>
+      </header>
+      
+      <div className="content">
+        <div className="quiz-boxes">
+          <div className="quiz-box" onClick={() => navigate('/basic-questions')}>
+            <h3>Short Quiz</h3>
+            <p>A simple quiz with general career-related questions to help you get started.</p>
+          </div>
+          <div className="quiz-box" onClick={() => navigate('/detailed-questions')}>
+            <h3>Detailed Quiz</h3>
+            <p>A more in-depth quiz with detailed questions to provide personalized recommendations.</p>
+          </div>
+        </div>
+      </div>
 
-        <div className="logo">
-          <img src={logo} alt="Career Pathway Logo" className="logo" />
+      <div className="api-key-section">
+        <div className="api-key-form">
+          <input
+            type="password"
+            placeholder="Insert OpenAI API Key here"
+            value={key}
+            onChange={changeKey}
+          />
+          <button onClick={handleSubmit}>Submit</button>
         </div>
-        
-        <footer className="footer">
-          <p>Built by Maksym Shkopas, Marcos Diaz Vazquez, Dhruv Patel</p>
-        </footer>
-        <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-        </Form>
       </div>
       
+      <footer className="footer">
+        <p>Built by Maksym Shkopas, Marcos Diaz Vazquez, Dhruv Patel</p>
+      </footer>
+    </div>
   );
 }
 
