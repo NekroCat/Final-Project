@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import './App.css';
-import { Button, Tooltip, Form, OverlayTrigger } from 'react-bootstrap';
-import { List } from 'react-bootstrap-icons';
+import { Button } from 'react-bootstrap';
 import BasicQuestions from './components/BasicQuestions';
 import DetailedQuestions from './components/DetailedQuestions';
 import { Route, Routes, useNavigate } from 'react-router-dom';
@@ -92,7 +91,7 @@ function HomePage() {
           <h1 className="website-title">Career Helpi</h1>
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <a href="#" className="about-link">About Us</a>
+          <button className="about-link" onClick={() => {}}>About Us</button>
           <div className="theme-buttons">
             <Button 
               onClick={() => handleSetTheme('dark')} 
