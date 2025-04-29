@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import BasicQuestions from './components/BasicQuestions';
 import DetailedQuestions from './components/DetailedQuestions';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import tealSparkles from './assets/tealsparkles.gif';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -21,7 +22,7 @@ const themes = {
     buttonText: '#ffffff',
     selectedButton: '#48A6A7',
     unselectedButton: '#333333',
-    quizTitle: '#ffffff'
+    quizTitle: '#FFFDD0'
   },
   light: {
     background: '#F2EFE7',
@@ -86,7 +87,7 @@ function HomePage() {
       <header className="header" style={{ background: theme.headerFooter, color: theme.text }}>
         <div className="header-left">
           <div className="menu-icon">
-            <img src={process.env.PUBLIC_URL + '/favicon-32x32.png'} alt="Career Helpi Logo" />
+            <img src={process.env.PUBLIC_URL + '/android-chrome-512x512.png'} alt="Career Helpi Logo" />
           </div>
           <h1 className="website-title">Career Helpi</h1>
         </div>
@@ -110,6 +111,10 @@ function HomePage() {
       </header>
       
       <div className="content">
+        <div className="subtitle-container">
+          <h2 className="quiz-subtitle">Select your preferred quiz</h2>
+          <img src={tealSparkles} alt="Teal Sparkles" className="particles-gif" />
+        </div>
         <div className="quiz-boxes">
           <div className="quiz-box" onClick={() => navigate('/basic-questions')}>
             <h3>Short Quiz</h3>
