@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import BasicQuestions from './components/BasicQuestions';
 import DetailedQuestions from './components/DetailedQuestions';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import ResultPage from './components/ResultPage';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -147,6 +148,7 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/basic-questions" element={<BasicQuestions />} />
       <Route path="/detailed-questions" element={<DetailedQuestions />} />
+      <Route path="/results" element={<ResultPage />} />
     </Routes>
   );
 }
