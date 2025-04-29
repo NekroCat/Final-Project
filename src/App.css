@@ -32,7 +32,9 @@ body, html {
 }
 
 .menu-icon img {
-  height: 30px;
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
 }
 
 .website-title {
@@ -226,6 +228,84 @@ body, html {
   display: block;
   margin: 0 auto; 
   animation: App-logo-spin 10s linear infinite; /* Apply the spin animation */
+}
+
+.subtitle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 2rem;
+}
+
+.quiz-subtitle {
+  font-size: 2rem;
+  text-align: center;
+  color: var(--text-color);
+  font-weight: 300;
+  font-style: italic;
+  margin: 0;
+}
+
+.particles-gif {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  font-weight: 300;
+  font-style: italic;
+}
+
+.developer-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.developer-card {
+  background-color: var(--header-footer);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.developer-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.developer-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--quiz-title);
+}
+
+.developer-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.developer-links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.developer-links a:hover {
+  color: var(--button-hover);
+  text-decoration: underline;
 }
 
 
