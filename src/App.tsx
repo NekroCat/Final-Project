@@ -7,6 +7,7 @@ import AboutUs from './components/AboutUs';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import ResultPage from './components/ResultPage';
 import tealSparkles from './assets/tealsparkles.gif';
+import BackgroundVideo from './components/VideoBackground';
 
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -86,7 +87,11 @@ function HomePage() {
   }
 
   return (
-    <div className="App" style={{ backgroundColor: theme.background, color: theme.text }}>
+    <div className="App" style={{color: theme.text }}>
+      <div className="background-video-container">
+      <BackgroundVideo currentTheme={currentTheme} />
+
+      </div>
       <header className="header" style={{ background: theme.headerFooter, color: theme.text }}>
         <div className="header-left">
           <div className="menu-icon" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
@@ -147,6 +152,7 @@ function HomePage() {
       </footer>
     </div>
   );
+  
 }
 
 function App() {

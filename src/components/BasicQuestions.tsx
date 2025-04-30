@@ -1,7 +1,8 @@
-import React, { useEffect,useState } from 'react';
+import { useEffect,useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
+import BackgroundVideo from '../components/VideoBackground';
 
 interface Question {
     id: number;
@@ -20,7 +21,7 @@ const questions: Question[] = [
     { id: 8, text: "Do you enjoy helping others?", options: ["Yes", "No"] },
     { id: 9, text: "Do you work well under pressure?", options: ["Yes", "No"] },
     { id: 10, text: "Would you rather work independently than in a team?", options: ["Independently!", "Team!"] },
-    { id: 11, text: "Are you interested in how things work mechanically or scientifically?", options: ["Yes", "No"] },
+    { id: 11, text: "Are you interested in how things work mechanically / scientifically?", options: ["Yes", "No"] },
     { id: 12, text: "Do you care about making a positive social or environmental impact?", options: ["Don't care.", "Definitely care!"] },
     { id: 13, text: "Would you be okay with working odd hours (e.g., nights or weekends)?", options: ["Normal Hours!", "Odd Hours!"] },
     { id: 14, text: "Are you good at explaining ideas to others?", options: ["Yes", "No"] },
@@ -44,9 +45,10 @@ const themes = {
     }
 };
 
+
 function BasicQuestions() {
     const navigate = useNavigate();
-    const themeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light' | null;
+    const themeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light';
     const theme = themeName ? themes[themeName] : themes.dark;
     const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: string }>({});
     document.body.style.backgroundColor = theme.background;
@@ -84,6 +86,9 @@ function BasicQuestions() {
     function handleSubmit() {
         navigate('/results?quiz=basic');
     }
+    // function ClearCache(){
+    //     localStorage.clear()
+    // }
 
     const buttonStyle = (questionId: number, option: string) => ({
         backgroundColor: selectedAnswers[questionId] === option ? '#48A6A7' : theme.button,
@@ -99,7 +104,8 @@ function BasicQuestions() {
 
 
     return (
-        <div style={{ backgroundColor: theme.background, minHeight: '100vh', color: theme.text }}>
+        <div style={{minHeight: '100vh', color: "transparent" }}>
+            <BackgroundVideo currentTheme={themeName} />
             <header className="header" style={{ backgroundColor: theme.headerFooter, color: theme.text }}>
                 <div className="menu-icon">
                     <img src={process.env.PUBLIC_URL + '/favicon-32x32.png'} alt="Career Helpi Logo" />

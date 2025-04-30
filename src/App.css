@@ -1,4 +1,5 @@
 body, html {
+  background: transparent !important; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,6 +23,7 @@ body, html {
   top: 0;
   left: 0;
   z-index: 10;
+  opacity: 0.7;
 }
 
 .menu-icon {
@@ -60,7 +62,7 @@ body, html {
 }
 
 .theme-buttons button {
-  color: var(--button-text) !important;
+  color: var(--button-text);
   border: none !important;
   transition: all 0.3s ease;
   padding: 8px 16px;
@@ -69,12 +71,12 @@ body, html {
 }
 
 .theme-buttons button.selected {
-  background-color: var(--selected-button) !important;
+  background-color: var(--selected-button);
   transform: scale(1.05);
 }
 
 .theme-buttons button.unselected {
-  background-color: var(--unselected-button) !important;
+  background-color: var(--unselected-button);
   opacity: 0.7;
 }
 
@@ -105,7 +107,8 @@ body, html {
 }
 
 .content {
-  gap: 20px;
+  background: transparent !important;
+  border: none;
   padding: 20px;
   margin-top: 120px; 
   margin-bottom: 50px;
@@ -156,28 +159,31 @@ body, html {
 }
 
 .footer {
-  background: var(--header-footer);
-  color: var(--text-color);
-  width: 100%;
-  text-align: center;
-  padding: 10px;
   position: fixed;
   bottom: 0;
   left: 0;
+  width: 100%;
+  background-color: var(--header-footer);
+  color: var(--text-color);
+  padding: 1rem;
+  text-align: center;
+  z-index: 2; 
 }
 
 .api-key-section {
   position: fixed;
-  bottom: 60px;
+  bottom: 60px; 
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  background: var(--header-footer);
-  color: var(--text-color);
+  padding: 16px;
+  background: transparent; 
+  backdrop-filter: blur(4px); 
+  z-index: 3;
 }
+
 
 .api-key-form {
   display: flex;
@@ -222,13 +228,6 @@ body, html {
   }
 }
 
-.logo {
-  width: auto; 
-  height: auto;
-  display: block;
-  margin: 0 auto; 
-  animation: App-logo-spin 10s linear infinite; /* Apply the spin animation */
-}
 
 .subtitle-container {
   display: flex;
@@ -306,6 +305,46 @@ body, html {
 .developer-links a:hover {
   color: var(--button-hover);
   text-decoration: underline;
+}
+
+.form input {
+  background-color: #10080832; 
+  color: #4c00ff;  
+}
+
+.form input::placeholder {
+  color: #4c00ff; 
+  text-align: center;
+  font-style: italic; 
+}
+
+.background-video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; 
+  overflow: hidden;
+}
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(2px);
+  opacity: 1;
+  animation: fadeInVideo 1s ease-in forwards;
+  transition: opacity 1s ease; 
+}
+
+@keyframes fadeInVideo {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 
