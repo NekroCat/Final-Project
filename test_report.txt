@@ -41,24 +41,26 @@ ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.[0m
   
-------------------------|---------|----------|---------|---------|-------------------
-File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-------------------------|---------|----------|---------|---------|-------------------
-All files               |       0 |        0 |       0 |       0 |                   
- src                    |       0 |        0 |       0 |       0 |                   
-  App.tsx               |       0 |        0 |       0 |       0 | 14-159            
-  index.tsx             |       0 |      100 |     100 |       0 | 8-22              
-  reportWebVitals.ts    |       0 |        0 |       0 |       0 | 3-10              
- src/components         |       0 |        0 |       0 |       0 |                   
-  AboutUs.tsx           |       0 |        0 |       0 |       0 | 7-84              
-  BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 13-171            
-  DetailedQuestions.tsx |       0 |        0 |       0 |       0 | 15-321            
-  ProgressBar.tsx       |       0 |        0 |       0 |       0 | 16-20             
-  ResultPage.tsx        |       0 |        0 |       0 |       0 | 15-331            
-  VideoBackground.tsx   |       0 |        0 |       0 |       0 | 7-8               
-------------------------|---------|----------|---------|---------|-------------------
+-------------------------|---------|----------|---------|---------|-------------------
+File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------------|---------|----------|---------|---------|-------------------
+All files                |       0 |        0 |       0 |       0 |                   
+ src                     |       0 |        0 |       0 |       0 |                   
+  App.tsx                |       0 |        0 |       0 |       0 | 16-161            
+  index.tsx              |       0 |      100 |     100 |       0 | 8-22              
+  reportWebVitals.ts     |       0 |        0 |       0 |       0 | 3-10              
+ src/components          |       0 |        0 |       0 |       0 |                   
+  AboutUs.tsx            |       0 |        0 |       0 |       0 | 7-84              
+  BasicQuestions.tsx     |       0 |        0 |       0 |       0 | 13-171            
+  BasicResultPage.tsx    |       0 |        0 |       0 |       0 | 14-310            
+  DetailedQuestions.tsx  |       0 |        0 |       0 |       0 | 15-321            
+  DetailedResultPage.tsx |       0 |        0 |       0 |       0 | 14-310            
+  ProgressBar.tsx        |       0 |        0 |       0 |       0 | 16-20             
+  ResultPage.tsx         |       0 |        0 |       0 |       0 | 15-332            
+  VideoBackground.tsx    |       0 |        0 |       0 |       0 | 7-8               
+-------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        4.137 s
+Time:        4.409 s
 Ran all test suites.
