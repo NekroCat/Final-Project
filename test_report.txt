@@ -55,10 +55,10 @@ All files               |       0 |        0 |       0 |       0 |
   DetailedQuestions.tsx |       0 |        0 |       0 |       0 | 15-321            
   ProgressBar.tsx       |       0 |        0 |       0 |       0 | 16-20             
   ResultPage.tsx        |       0 |        0 |       0 |       0 | 15-325            
-  VideoBackground.tsx   |       0 |      100 |       0 |       0 | 7-8               
+  VideoBackground.tsx   |       0 |        0 |       0 |       0 | 7-8               
 ------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        3.754 s
+Time:        3.765 s
 Ran all test suites.
