@@ -2,6 +2,8 @@ import { useEffect,useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
+import BackgroundVideo from '../components/VideoBackground';
+
 
 interface Question {
     id: number;
@@ -92,7 +94,7 @@ const themes = {
 
 function DetailedQuestions() {
     const navigate = useNavigate();
-    const themeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light' | null;
+    const themeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light';
     const theme = themeName ? themes[themeName] : themes.dark;
     const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: string }>({});
     const [openAnswers, setOpenAnswers] = useState<{ [key: number]: string }>({});
@@ -163,11 +165,12 @@ function DetailedQuestions() {
     }
 
     function handleSubmit() {
-        navigate('/results?quiz=basic');
+        navigate('/detailed-results');
     }
 
     return (
-        <div style={{ backgroundColor: theme.background, minHeight: '100vh', color: theme.text }}>
+        <div style={{minHeight: '100vh', color: "transparent" }}>
+            <BackgroundVideo currentTheme={themeName} />
             <header className="header" style={{ backgroundColor: theme.headerFooter, color: theme.text, position: 'fixed', width: '100%', zIndex: 100 }}>
                 <div className="menu-icon">
                     <img src={process.env.PUBLIC_URL + '/android-chrome-512x512.png'} alt="Career Helpi Logo" />

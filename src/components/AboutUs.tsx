@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import tealSparkles from '../assets/tealsparkles.gif';
+import BackgroundVideo from '../components/VideoBackground';
 
 const themes = {
   dark: {
@@ -34,7 +35,7 @@ const themes = {
 
 function AboutUs() {
   const navigate = useNavigate();
-  const storedThemeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light' | null;
+  const storedThemeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light';
   const [theme, setTheme] = useState(storedThemeName ? themes[storedThemeName] : themes.dark);
   const [currentTheme, setCurrentTheme] = useState<'dark' | 'light'>(storedThemeName || 'dark');
 
@@ -61,7 +62,8 @@ function AboutUs() {
   }
 
   return (
-    <div className="App" style={{ backgroundColor: theme.background, color: theme.text }}>
+    <div className="App" style={{ color: theme.text }}>
+      <BackgroundVideo currentTheme={storedThemeName} />
       <header className="header" style={{ background: theme.headerFooter, color: theme.text }}>
         <div className="header-left">
           <div className="menu-icon" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>

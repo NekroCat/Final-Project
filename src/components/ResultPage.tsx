@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Button, Spinner } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
+import BackgroundVideo from '../components/VideoBackground';
+import tealSparkles from '../assets/tealsparkles.gif';
 
 
 interface Career {
@@ -17,7 +19,7 @@ function ResultPage() {
     const [careers, setCareers] = useState<Career[]>([]);
     const [quizType, setQuizType] = useState<'basic' | 'detailed'>('basic');
     
-    const themeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light' | null;
+    const themeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light';
     const themes = {
         dark: {
         background: '#181818',
@@ -47,7 +49,8 @@ function ResultPage() {
         }
     };
     
-    const theme = themeName ? themes[themeName] : themes.dark;
+    const [currentTheme, setCurrentTheme] = useState<'dark' | 'light'>(themeName || 'dark');
+    const [theme, setTheme] = useState(themes[currentTheme]);
 
     useEffect(() => {
         document.body.style.backgroundColor = theme.background;
@@ -56,14 +59,17 @@ function ResultPage() {
         const searchParams = new URLSearchParams(location.search);
         const quizParam = searchParams.get('quiz');
         if (quizParam === 'detailed') {
-        setQuizType('detailed');
+            setQuizType('detailed');
         } else {
-        setQuizType('basic');
+            setQuizType('basic');
         }
-        
-        generateCareerRecommendations();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);
+
+    useEffect(() => {
+        generateCareerRecommendations();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [quizType]);
     
     const generateCareerRecommendations = async () => {
         try {
@@ -222,28 +228,49 @@ function ResultPage() {
     const handleTryAgain = () => {
         navigate('/');
     };
+    const handleTryAnotherQuiz = () => {
+        localStorage.clear(); // Clear all localStorage data
+        navigate('/');
+    };
     
     const handleSaveResults = () => {
         alert('This feature will allow saving results in a future update!');
     };
     
+    const handleSetTheme = (themeName: 'dark' | 'light') => {
+        setCurrentTheme(themeName);
+        setTheme(themes[themeName]);
+        localStorage.setItem('SELECTED_THEME', themeName);
+    };
+
     return (
-        <div style={{ backgroundColor: theme.background, minHeight: '100vh', color: theme.text }}>
+        <div style={{ backgroundColor: theme.background, minHeight: '100vh', color: theme.text}}>
+        <BackgroundVideo currentTheme={themeName} />
+
         <header className="header" style={{ backgroundColor: theme.headerFooter, color: theme.text }}>
             <div className="header-left">
-            <div className="menu-icon">
+            <div className="menu-icon" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
             <img src={process.env.PUBLIC_URL + '/android-chrome-512x512.png'} alt="Career Helpi Logo" />
             </div>
-            <h1 className="website-title">Career Helpi - Your Results</h1>
+            <h1 className="website-title" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>Career Helpi</h1>
             </div>
-            <Button 
-            variant="outline-light" 
-            className="return-button" 
-            onClick={() => navigate('/')} 
-            style={{backgroundColor: theme.button, color: theme.text }}
-            >
-            Return to Main Page
-            </Button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <button className="about-link" onClick={() => navigate('/about')} style={{ marginRight: '1rem' }}>About Us</button>
+            <div className="theme-buttons" style={{ display: 'flex', gap: '0.5rem' }}>
+                <Button 
+                onClick={() => handleSetTheme('dark')} 
+                className={currentTheme === 'dark' ? 'selected' : 'unselected'}
+                >
+                Dark Theme
+                </Button>
+                <Button 
+                onClick={() => handleSetTheme('light')} 
+                className={currentTheme === 'light' ? 'selected' : 'unselected'}
+                >
+                Light Theme
+                </Button>
+            </div>
+            </div>
         </header>
         
         <div style={{
@@ -254,9 +281,14 @@ function ResultPage() {
             <h2 style={{ 
             textAlign: 'center', 
             marginBottom: '2rem',
-            color: theme.text
+            color: theme.text,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '10px'
             }}>
             Your Career Recommendations
+            <img src={tealSparkles} alt="Teal Sparkles" className="particles-gif" style={{ marginTop: '-15px', marginLeft: '5px' }} />
             </h2>
             
             {isLoading ? (
@@ -334,7 +366,7 @@ function ResultPage() {
                     Save Results
                 </Button>
                 <Button 
-                    onClick={handleTryAgain}
+                    onClick={handleTryAnotherQuiz}
                     style={{
                     backgroundColor: theme.button,
                     color: '#ffffff',
@@ -360,5 +392,4 @@ function ResultPage() {
         </div>
     );
 }
-
 export default ResultPage;
