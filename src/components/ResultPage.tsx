@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Spinner } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { List } from 'react-bootstrap-icons';
+
 
 interface Career {
     title: string;
@@ -62,6 +62,7 @@ function ResultPage() {
         }
         
         generateCareerRecommendations();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);
     
     const generateCareerRecommendations = async () => {
@@ -231,7 +232,7 @@ function ResultPage() {
         <header className="header" style={{ backgroundColor: theme.headerFooter, color: theme.text }}>
             <div className="header-left">
             <div className="menu-icon">
-                <List size={30} />
+            <img src={process.env.PUBLIC_URL + '/android-chrome-512x512.png'} alt="Career Helpi Logo" />
             </div>
             <h1 className="website-title">Career Helpi - Your Results</h1>
             </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import tealSparkles from '../assets/tealsparkles.gif';
