@@ -6,6 +6,8 @@ import DetailedQuestions from './components/DetailedQuestions';
 import AboutUs from './components/AboutUs';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import ResultPage from './components/ResultPage';
+import BasicResultPage from './components/BasicResultPage';
+import DetailedResultPage from './components/DetailedResultPage';
 import tealSparkles from './assets/tealsparkles.gif';
 import BackgroundVideo from './components/VideoBackground';
 
@@ -162,6 +164,8 @@ function App() {
       <Route path="/basic-questions" element={<BasicQuestions />} />
       <Route path="/detailed-questions" element={<DetailedQuestions />} />
       <Route path="/results" element={<ResultPage />} />
+      <Route path="/basic-results" element={<BasicResultPage />} />   
+      <Route path="/detailed-results" element={<DetailedResultPage />} />         
       <Route path="/about" element={<AboutUs />} />
     </Routes>
   );

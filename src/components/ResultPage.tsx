@@ -63,8 +63,6 @@ function ResultPage() {
         } else {
             setQuizType('basic');
         }
-        
-        generateCareerRecommendations();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);
 
@@ -113,7 +111,7 @@ function ResultPage() {
     };
     
     const collectAnswers = () => {
-        const prefix = quizType === 'basic' ? 'basic-' : 'detailed';
+        const prefix = quizType === 'basic' ? 'basic-' : 'detailed-';
         const answers: { [key: string]: string } = {};
         
         for (let i = 0; i < localStorage.length; i++) {
@@ -228,6 +226,9 @@ function ResultPage() {
     };
     
     const handleTryAgain = () => {
+        navigate('/');
+    };
+    const handleTryAnotherQuiz = () => {
         localStorage.clear(); // Clear all localStorage data
         navigate('/');
     };
@@ -365,7 +366,7 @@ function ResultPage() {
                     Save Results
                 </Button>
                 <Button 
-                    onClick={handleTryAgain}
+                    onClick={handleTryAnotherQuiz}
                     style={{
                     backgroundColor: theme.button,
                     color: '#ffffff',

@@ -165,7 +165,7 @@ function DetailedQuestions() {
     }
 
     function handleSubmit() {
-        navigate('/results?quiz=detailed');
+        navigate('/detailed-results');
     }
 
     return (
@@ -173,7 +173,7 @@ function DetailedQuestions() {
             <BackgroundVideo currentTheme={themeName} />
             <header className="header" style={{ backgroundColor: theme.headerFooter, color: theme.text, position: 'fixed', width: '100%', zIndex: 100 }}>
                 <div className="menu-icon">
-                    <img src={process.env.PUBLIC_URL + '/favicon-32x32.png'} alt="Career Helpi Logo" />
+                    <img src={process.env.PUBLIC_URL + '/android-chrome-512x512.png'} alt="Career Helpi Logo" />
                 </div>
                 <h1 className="website-title">Career Pathway - Detailed Assessment</h1>
                 <Button variant="outline-light" className="return-button" onClick={() => navigate('/')} style={{backgroundColor: theme.button, color: theme.text }}>Return to Main Page</Button>
