@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import { useEffect,useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
@@ -102,7 +102,7 @@ function BasicQuestions() {
         <div style={{ backgroundColor: theme.background, minHeight: '100vh', color: theme.text }}>
             <header className="header" style={{ backgroundColor: theme.headerFooter, color: theme.text }}>
                 <div className="menu-icon">
-                    <img src={process.env.PUBLIC_URL + '/favicon-32x32.png'} alt="Career Helpi Logo" />
+                    <img src={process.env.PUBLIC_URL + '/android-chrome-512x512.png'} alt="Career Helpi Logo" />
                 </div>
                 <h1 className="website-title">Career Pathway - Basic Assessment</h1>
                 <Button variant="outline-light" className="return-button" onClick={() => navigate('/')} style={{backgroundColor: theme.button, color: theme.text }}>Return to Main Page</Button>
