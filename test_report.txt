@@ -54,10 +54,10 @@ All files               |       0 |        0 |       0 |       0 |
   BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 12-165            
   DetailedQuestions.tsx |       0 |        0 |       0 |       0 | 13-318            
   ProgressBar.tsx       |       0 |        0 |       0 |       0 | 16-20             
-  ResultPage.tsx        |       0 |        0 |       0 |       0 | 13-300            
+  ResultPage.tsx        |       0 |        0 |       0 |       0 | 14-322            
 ------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        3.879 s
+Time:        3.889 s
 Ran all test suites.
