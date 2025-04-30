@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { List } from 'react-bootstrap-icons';
 import ProgressBar from './ProgressBar';
+import BackgroundVideo from '../components/VideoBackground';
 
 interface Question {
     id: number;
@@ -45,9 +46,10 @@ const themes = {
     }
 };
 
+
 function BasicQuestions() {
     const navigate = useNavigate();
-    const themeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light' | null;
+    const themeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light';
     const theme = themeName ? themes[themeName] : themes.dark;
     const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: string }>({});
     document.body.style.backgroundColor = theme.background;
@@ -100,7 +102,8 @@ function BasicQuestions() {
 
 
     return (
-        <div style={{ backgroundColor: theme.background, minHeight: '100vh', color: theme.text }}>
+        <div style={{minHeight: '100vh', color: "transparent" }}>
+            <BackgroundVideo currentTheme={themeName} />
             <header className="header" style={{ backgroundColor: theme.headerFooter, color: theme.text }}>
                 <div className="menu-icon">
                     <List size={30} />
