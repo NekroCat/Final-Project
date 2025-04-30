@@ -169,7 +169,7 @@ function ResultPage() {
             'Authorization': `Bearer ${apiKey}`
             },
             body: JSON.stringify({
-            model: 'gpt-3.5-turbo',
+            model: 'gpt-4-turbo',
             messages: [
                 { role: 'system', content: 'You are a career counselor assistant that provides personalized career recommendations based on quiz responses. Always respond with valid JSON.' },
                 { role: 'user', content: prompt }
