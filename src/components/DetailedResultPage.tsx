@@ -222,7 +222,7 @@ function DetailedResultPage() {
     };
 
     return (
-        <div style={{ backgroundColor: theme.background, minHeight: '100vh', color: theme.text}}>
+        <div style={{ minHeight: '100vh', color: theme.text}}>
             <BackgroundVideo currentTheme={themeName} />
 
             <header className="header" style={{ backgroundColor: theme.headerFooter, color: theme.text }}>
