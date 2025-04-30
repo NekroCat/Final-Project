@@ -41,10 +41,7 @@ function HomePage() {
   useEffect(() => {
     document.body.style.backgroundColor = theme.background;
     document.body.style.color = theme.text;
-    const videoElement = document.querySelector('.background-video') as HTMLVideoElement;
-    if (videoElement) {
-      videoElement.play();
-    }
+    
   }, [theme]);
   
   
@@ -62,12 +59,14 @@ function HomePage() {
   return (
     <div className="App" style={{color: theme.text }}>
       {theme === themes.dark && (
-        <video autoPlay loop muted playsInline className="background-video">
-          <source src="./dark_video (video-converter.com).mp4" type="video/mp4"/>
-
-          Your browser does not support the video tag.
-        </video>
+      <img
+      src="./dark_video_24.gif" 
+      alt="Background GIF"
+      className="background-video"
+      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+      />
       )}
+      
       <header className="header" style={{ background: theme.headerFooter, color: theme.text }}>
         <div className="menu-icon">
           <List size={30} />
