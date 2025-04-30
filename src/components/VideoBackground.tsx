@@ -15,7 +15,7 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ currentTheme }) => {
         muted
         playsInline
       >
-        <source src={`${process.env.PUBLIC_URL}/night.mp4`} type="video/mp4" />
+        <source src={currentTheme === 'dark' ? `${process.env.PUBLIC_URL}/night.mp4` : `${process.env.PUBLIC_URL}/day.mp4`} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
