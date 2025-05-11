@@ -20,14 +20,16 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ current, total, theme }) => {
     return (
         <div style={{
         position: 'fixed',
-        top: '90px',
+        top: '80px',
         left: 0,
         right: 0,
         zIndex: 99,
         padding: '0.5rem 1rem',
         backgroundColor: theme.headerFooter,
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-        transition: 'all 0.3s ease'
+        transition: 'all 0.3s ease',
+        borderTop: '1px solid rgba(0, 0, 0, 0.1)',
+        opacity: 0.7
         }}>
         <div style={{
             maxWidth: '1200px',

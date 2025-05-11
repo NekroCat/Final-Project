@@ -35,6 +35,12 @@ const themes = {
         button: '#333333',
         buttonHover: '#555555',
         headerFooter: 'rgba(33, 33, 33, 0.9)',
+        accent: '#48A6A7',
+        linkColor: '#48A6A7',
+        buttonText: '#ffffff',
+        selectedButton: '#48A6A7',
+        unselectedButton: '#333333',
+        quizTitle: '#FFFDD0'
     },
     light: {
         background: '#F2EFE7',
@@ -42,6 +48,12 @@ const themes = {
         button: '#9ACBD0',
         buttonHover: '#48A6A7',
         headerFooter: '#DDD8CF',
+        accent: '#48A6A7',
+        linkColor: '#48A6A7',
+        buttonText: '#ffffff',
+        selectedButton: '#48A6A7',
+        unselectedButton: '#9ACBD0',
+        quizTitle: '#006A71'
     }
 };
 
@@ -49,10 +61,25 @@ const themes = {
 function BasicQuestions() {
     const navigate = useNavigate();
     const themeName = localStorage.getItem('SELECTED_THEME') as 'dark' | 'light';
-    const theme = themeName ? themes[themeName] : themes.dark;
+    const [currentTheme, setCurrentTheme] = useState<'dark' | 'light'>(themeName || 'dark');
+    const [theme, setTheme] = useState(themes[currentTheme]);
     const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: string }>({});
-    document.body.style.backgroundColor = theme.background;
-    document.body.style.color = theme.text;
+
+    useEffect(() => {
+        document.body.style.backgroundColor = theme.background;
+        document.body.style.color = theme.text;
+        document.documentElement.style.setProperty('--background-color', theme.background);
+        document.documentElement.style.setProperty('--text-color', theme.text);
+        document.documentElement.style.setProperty('--button', theme.button);
+        document.documentElement.style.setProperty('--button-hover', theme.buttonHover);
+        document.documentElement.style.setProperty('--header-footer', theme.headerFooter);
+        document.documentElement.style.setProperty('--accent', theme.accent);
+        document.documentElement.style.setProperty('--link-color', theme.linkColor);
+        document.documentElement.style.setProperty('--button-text', theme.buttonText);
+        document.documentElement.style.setProperty('--selected-button', theme.selectedButton);
+        document.documentElement.style.setProperty('--unselected-button', theme.unselectedButton);
+        document.documentElement.style.setProperty('--quiz-title', theme.quizTitle);
+    }, [theme]);
 
     useEffect(() => {
             const storedAnswers: { [key: number]: string } = {};
@@ -102,16 +129,39 @@ function BasicQuestions() {
     const answeredQuestions = Object.keys(selectedAnswers).length;
     const totalQuestions = questions.length;
 
+    function handleSetTheme(themeName: 'dark' | 'light') {
+        setTheme(themes[themeName]);
+        setCurrentTheme(themeName);
+        localStorage.setItem('SELECTED_THEME', themeName);
+    }
 
     return (
         <div style={{minHeight: '100vh', color: "transparent" }}>
-            <BackgroundVideo currentTheme={themeName} />
+            <BackgroundVideo currentTheme={currentTheme} />
             <header className="header" style={{ backgroundColor: theme.headerFooter, color: theme.text }}>
-                <div className="menu-icon">
-                    <img src={process.env.PUBLIC_URL + '/android-chrome-512x512.png'} alt="Career Helpi Logo" />
+                <div className="header-left">
+                    <div className="menu-icon" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+                        <img src={process.env.PUBLIC_URL + '/android-chrome-512x512.png'} alt="Career Helpi Logo" />
+                    </div>
+                    <h1 className="website-title" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>Career Helpi</h1>
                 </div>
-                <h1 className="website-title">Career Pathway - Basic Assessment</h1>
-                <Button variant="outline-light" className="return-button" onClick={() => navigate('/')} style={{backgroundColor: theme.button, color: theme.text }}>Return to Main Page</Button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <button className="about-link" onClick={() => navigate('/about')} style={{ marginRight: '1rem' }}>About Us</button>
+                    <div className="theme-buttons" style={{ display: 'flex', gap: '0.5rem' }}>
+                        <Button 
+                            onClick={() => handleSetTheme('dark')} 
+                            className={currentTheme === 'dark' ? 'selected' : 'unselected'}
+                        >
+                            Dark Theme
+                        </Button>
+                        <Button 
+                            onClick={() => handleSetTheme('light')} 
+                            className={currentTheme === 'light' ? 'selected' : 'unselected'}
+                        >
+                            Light Theme
+                        </Button>
+                    </div>
+                </div>
             </header>
             <div style={{
                 maxWidth: '1200px',
