@@ -100,24 +100,42 @@ function AboutUs() {
             <div className="developer-card">
               <h3>Maksym Shkopas</h3>
               <div className="developer-links">
-                <a href="https://github.com/NekroCat" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/maksym-shkopas" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/NekroCat" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style={{ height: '20px', width: '20px', marginRight: '5px', verticalAlign: 'middle' }} />
+                  GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/maksym-shkopas" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style={{ height: '20px', width: '20px', marginRight: '5px', verticalAlign: 'middle' }} />
+                  LinkedIn
+                </a>
               </div>
             </div>
 
             <div className="developer-card">
               <h3>Marcos Diaz Vazquez</h3>
               <div className="developer-links">
-                <a href="https://github.com/marcosdiazvazquez" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/marcos-diaz-vazquez/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/marcosdiazvazquez" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style={{ height: '20px', width: '20px', marginRight: '5px', verticalAlign: 'middle' }} />
+                  GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/marcos-diaz-vazquez/" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style={{ height: '20px', width: '20px', marginRight: '5px', verticalAlign: 'middle' }} />
+                  LinkedIn
+                </a>
               </div>
             </div>
 
             <div className="developer-card">
               <h3>Dhruv Patel</h3>
               <div className="developer-links">
-                <a href="https://github.com/rkdhruv" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/rkdhruv/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/rkdhruv" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style={{ height: '20px', width: '20px', marginRight: '5px', verticalAlign: 'middle' }} />
+                  GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/rkdhruv/" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style={{ height: '20px', width: '20px', marginRight: '5px', verticalAlign: 'middle' }} />
+                  LinkedIn
+                </a>
               </div>
             </div>
           </div>
