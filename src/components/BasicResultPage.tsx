@@ -228,9 +228,9 @@ function BasicResultPage() {
             <header className="header" style={{ backgroundColor: theme.headerFooter, color: theme.text }}>
                 <div className="header-left">
                     <div className="menu-icon" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-                        <img src={process.env.PUBLIC_URL + '/android-chrome-512x512.png'} alt="Career Helpi Logo" />
+                        <img src={process.env.PUBLIC_URL + '/android-chrome-512x512.png'} alt="Pathfinder Logo" />
                     </div>
-                    <h1 className="website-title" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>Career Helpi</h1>
+                    <h1 className="website-title" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>Pathfinder</h1>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <button className="about-link" onClick={() => navigate('/about')} style={{ marginRight: '1rem' }}>About Us</button>
