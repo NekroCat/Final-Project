@@ -52,9 +52,9 @@ All files                |       0 |        0 |       0 |       0 |
  src/components          |       0 |        0 |       0 |       0 |                   
   AboutUs.tsx            |       0 |        0 |       0 |       0 | 7-84              
   BasicQuestions.tsx     |       0 |        0 |       0 |       0 | 13-221            
-  BasicResultPage.tsx    |       0 |        0 |       0 |       0 | 14-310            
+  BasicResultPage.tsx    |       0 |        0 |       0 |       0 | 15-394            
   DetailedQuestions.tsx  |       0 |        0 |       0 |       0 | 15-370            
-  DetailedResultPage.tsx |       0 |        0 |       0 |       0 | 14-310            
+  DetailedResultPage.tsx |       0 |        0 |       0 |       0 | 15-401            
   ProgressBar.tsx        |       0 |        0 |       0 |       0 | 16-20             
   ResultPage.tsx         |       0 |        0 |       0 |       0 | 15-332            
   VideoBackground.tsx    |       0 |        0 |       0 |       0 | 7-8               
@@ -62,5 +62,5 @@ All files                |       0 |        0 |       0 |       0 |
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        4.212 s
+Time:        4.569 s
 Ran all test suites.
