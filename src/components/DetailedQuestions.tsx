@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
 import BackgroundVideo from '../components/VideoBackground';
-
+import { useRef } from 'react';
 
 interface Question {
     id: number;
@@ -184,6 +184,18 @@ function DetailedQuestions() {
     const answeredMultipleChoice = Object.keys(selectedAnswers).length;
     const answeredOpenEnded = Object.values(openAnswers).filter(answer => answer && answer.trim() !== '').length;
     const totalAnswered = answeredMultipleChoice + answeredOpenEnded;
+    const alertShownRef = useRef(false);
+
+    useEffect(() => {
+        if (
+            !alertShownRef.current &&
+            answeredMultipleChoice === questions.length &&
+            answeredOpenEnded === openEndedQuestions.length
+        ) {
+            alertShownRef.current = true;
+            alert("All questions answered! You can now submit to see your career recommendations.");
+        }
+    }, [answeredMultipleChoice, answeredOpenEnded]);
 
     function SetQuestionState(questionID: number, answer: string) {
         localStorage.setItem(`detailed-${questionID.toString()}`, answer);

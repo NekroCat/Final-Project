@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
 import BackgroundVideo from '../components/VideoBackground';
+import { useRef } from 'react';
 
 interface Question {
     id: number;
@@ -128,6 +129,14 @@ function BasicQuestions() {
 
     const answeredQuestions = Object.keys(selectedAnswers).length;
     const totalQuestions = questions.length;
+    const alertShownRef = useRef(false);
+
+    useEffect(() => {
+        if (!alertShownRef.current && Object.keys(selectedAnswers).length === totalQuestions) {
+            alertShownRef.current = true;
+            alert("All questions answered! You can now submit to see your career recommendations.");
+        }
+    }, [selectedAnswers, totalQuestions]);
 
     function handleSetTheme(themeName: 'dark' | 'light') {
         setTheme(themes[themeName]);
